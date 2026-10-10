@@ -20,6 +20,11 @@ public class UserController {
 	@PutMapping("/updateUser")
 	public String updateUser() {
 		return "Update User Successfully";
+		
+		}
+	@GetMapping("/getUser2")
+	public String getUser2() {
+		return "User2 Fetched Successfully";
 	}
 }
 
