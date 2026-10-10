@@ -26,6 +26,9 @@ public class UserController {
 	public String getUser2() {
 		return "User2 Fetched Successfully";
 	}
+	@GetMapping("/getUser3")
+	public String getUser3() {
+		return "User3 Fetched Successfully";
 
 	}
-
+}
