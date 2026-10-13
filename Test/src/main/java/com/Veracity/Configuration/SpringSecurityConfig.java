@@ -17,6 +17,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SpringSecurityConfig {
 	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 	
 	@Bean
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) {
@@ -31,5 +35,22 @@ public class SpringSecurityConfig {
 
 }
 	
+	@Bean
+	public UserDetailsService userDetailsService() {
+		
+		UserDetails user = User.builder()
+				.username("user")
+				.password(passwordEncoder().encode("user123"))
+				.roles("USER")
+				.build();
+		
+		UserDetails admin = User.builder()
+				.username("admin")
+				.password(passwordEncoder().encode("admin123"))
+				.roles("ADMIN")
+				.build();
+		
+		return new InMemoryUserDetailsManager(user,admin);
+	}
 
 }
