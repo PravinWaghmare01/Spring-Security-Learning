@@ -7,28 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
-@RequestMapping("/test")
+@RequestMapping("/api")
 public class UserController {
-	@GetMapping("/getUser")
-	public String getUser() {
+	@GetMapping("/admin")
+	public String Admin() {
+		return "Get admin Successfully";
+	}
+	@GetMapping("/user")
+    public String User() { 
 		return "Get user Successfully";
 	}
-	@PostMapping("/setUser")
-    public String setUser() { 
-		return "Set user Successfully";
-	}
-	@PutMapping("/updateUser")
-	public String updateUser() {
-		return "Update User Successfully";
+	@GetMapping("/welcome")
+	public String Welcome() {
+		return "Welcome Successfully";
 		
 		}
-	@GetMapping("/getUser2")
-	public String getUser2() {
-		return "User2 Fetched Successfully";
-	}
-	@GetMapping("/getUser3")
-	public String getUser3() {
-		return "User3 Fetched Successfully";
-
-	}
 }
