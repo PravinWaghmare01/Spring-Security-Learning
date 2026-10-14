@@ -25,7 +25,8 @@ public class SpringSecurityConfig {
 	@Bean
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) {
 		http.authorizeHttpRequests((requests) -> requests
-				.requestMatchers(HttpMethod.GET, "/api/admin","/api/user").authenticated()
+				.requestMatchers(HttpMethod.GET, "/api/admin").hasRole("ADMIN")
+				.requestMatchers(HttpMethod.GET, "/api/user").hasAnyRole("USER","ADMIN")
 				.requestMatchers(HttpMethod.GET, "/api/welcome").permitAll()// To expose all method publicly then we are using permitAll() method
 				.anyRequest().authenticated()
 				);
